@@ -26,5 +26,6 @@ Step 3:
 
     dotnet dotnet-ef database update
 
+>>> Please don't forget of make a file .env you can copy the .env-example for you and  configurate the application. Is Importanto to tell that the password of database you must change in the docker-compose.yml file too for you password database.
 
 the application will be running in host `` http://localhost:8080/``
