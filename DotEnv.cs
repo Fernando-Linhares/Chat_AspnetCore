@@ -4,7 +4,7 @@ namespace Chat_AspnetCore;
 
 public class DotEnv
 {
-   private static Dictionary<string, string> _envvars;
+   private static Dictionary<string, string>? _envvars = null;
 
    public void Load()
    {
@@ -32,7 +32,7 @@ public class DotEnv
 
         var match = regex.Match(line);
 
-        if(match.Success)
+        if(match.Success && _envvars is not null)
         {
             string[] keyvalue = line.Split("=");
 
@@ -55,7 +55,7 @@ public class DotEnv
 
    public string Get(string key)
    {
-        if(_envvars.Keys.Contains(key))
+        if(_envvars is not null && _envvars.Keys.Contains(key))
             return _envvars[key];
 
         return Environment.GetEnvironmentVariable(key)
