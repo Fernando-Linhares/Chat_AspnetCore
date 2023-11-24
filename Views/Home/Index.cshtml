@@ -3,13 +3,18 @@
 
     string? username = "Loggin for access chat";
     string usernametitle =  "Loggin for access chat";
+    string id = "";
 
     if(User.Identity.IsAuthenticated)
     {
         username = (User.Identity.Name.Length > 18)
             ?  User.Identity.Name.Substring(0, 18) + "..."
             : User.Identity.Name;
+
     
+
+
+
         usernametitle = User.Identity.Name;
     }
 
