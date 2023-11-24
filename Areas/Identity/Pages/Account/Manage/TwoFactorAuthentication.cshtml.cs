@@ -13,12 +13,12 @@ namespace Chat_AspnetCore.Areas.Identity.Pages.Account.Manage
 {
     public class TwoFactorAuthenticationModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _userManager;
+        private readonly SignInManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _signInManager;
         private readonly ILogger<TwoFactorAuthenticationModel> _logger;
 
         public TwoFactorAuthenticationModel(
-            UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ILogger<TwoFactorAuthenticationModel> logger)
+            UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> userManager, SignInManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> signInManager, ILogger<TwoFactorAuthenticationModel> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;

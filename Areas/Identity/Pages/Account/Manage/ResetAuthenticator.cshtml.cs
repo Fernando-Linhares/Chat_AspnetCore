@@ -13,13 +13,13 @@ namespace Chat_AspnetCore.Areas.Identity.Pages.Account.Manage
 {
     public class ResetAuthenticatorModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _userManager;
+        private readonly SignInManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _signInManager;
         private readonly ILogger<ResetAuthenticatorModel> _logger;
 
         public ResetAuthenticatorModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> userManager,
+            SignInManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> signInManager,
             ILogger<ResetAuthenticatorModel> logger)
         {
             _userManager = userManager;

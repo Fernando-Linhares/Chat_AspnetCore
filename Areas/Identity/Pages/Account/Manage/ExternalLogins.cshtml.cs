@@ -16,14 +16,14 @@ namespace Chat_AspnetCore.Areas.Identity.Pages.Account.Manage
 {
     public class ExternalLoginsModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly IUserStore<IdentityUser> _userStore;
+        private readonly UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _userManager;
+        private readonly SignInManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _signInManager;
+        private readonly IUserStore<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _userStore;
 
         public ExternalLoginsModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
-            IUserStore<IdentityUser> userStore)
+            UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> userManager,
+            SignInManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> signInManager,
+            IUserStore<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> userStore)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -69,7 +69,7 @@ namespace Chat_AspnetCore.Areas.Identity.Pages.Account.Manage
                 .ToList();
 
             string passwordHash = null;
-            if (_userStore is IUserPasswordStore<IdentityUser> userPasswordStore)
+            if (_userStore is IUserPasswordStore<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> userPasswordStore)
             {
                 passwordHash = await userPasswordStore.GetPasswordHashAsync(user, HttpContext.RequestAborted);
             }

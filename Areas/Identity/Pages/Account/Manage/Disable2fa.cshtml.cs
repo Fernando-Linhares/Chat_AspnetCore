@@ -13,11 +13,11 @@ namespace Chat_AspnetCore.Areas.Identity.Pages.Account.Manage
 {
     public class Disable2faModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _userManager;
         private readonly ILogger<Disable2faModel> _logger;
 
         public Disable2faModel(
-            UserManager<IdentityUser> userManager,
+            UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> userManager,
             ILogger<Disable2faModel> logger)
         {
             _userManager = userManager;

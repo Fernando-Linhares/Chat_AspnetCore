@@ -16,13 +16,13 @@ namespace Chat_AspnetCore.Areas.Identity.Pages.Account
 {
     public class LoginWith2faModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _signInManager;
+        private readonly UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _userManager;
         private readonly ILogger<LoginWith2faModel> _logger;
 
         public LoginWith2faModel(
-            SignInManager<IdentityUser> signInManager,
-            UserManager<IdentityUser> userManager,
+            SignInManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> signInManager,
+            UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> userManager,
             ILogger<LoginWith2faModel> logger)
         {
             _signInManager = signInManager;

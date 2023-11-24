@@ -13,12 +13,12 @@ namespace Chat_AspnetCore.Areas.Identity.Pages.Account.Manage
 {
     public class SetPasswordModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _userManager;
+        private readonly SignInManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _signInManager;
 
         public SetPasswordModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> userManager,
+            SignInManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Chat_AspnetCore.Models;
 
 namespace Chat_AspnetCore.Areas.Identity.Data;
 
-public class ChatContext : IdentityDbContext<IdentityUser>
+public class ChatContext : IdentityDbContext<ApplicationUser>
 {
+    public DbSet<Message> Message;
+
     public ChatContext(DbContextOptions<ChatContext> options)
         : base(options)
     {

@@ -1,8 +1,144 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+
+    string? username = "Loggin for access chat";
+    string usernametitle =  "Loggin for access chat";
+
+    if(User.Identity.IsAuthenticated)
+    {
+        username = (User.Identity.Name.Length > 18)
+            ?  User.Identity.Name.Substring(0, 18) + "..."
+            : User.Identity.Name;
+    
+        usernametitle = User.Identity.Name;
+    }
+
 }
 
+<style>
+    .login-panel
+    {
+        width: 300px;
+        position: absolute;
+        right: 20px;
+        margin: 10px;
+        display: grid;
+        grid-template-columns: 190px 90px;
+        border: solid 1px rgba(172, 137, 137, 0.479);
+        padding: 5px;
+        border-radius: 5px;
+        justify-content: center;
+        align-items: center;
+        background: rgba(122, 80, 80, 0.192);
+    }
+
+    #container-chat
+    {
+        position: relative;
+        top: 80px;
+        height: 350px;
+    }
+
+    .message
+    {
+        margin: 4px;
+        width: 85%;
+    }
+
+    .card-body
+    {
+        position: relative;
+    }
+
+    .me
+    {
+        position: relative;
+        left: 15%;
+        border-radius: 10px 0 10px 10px;
+        background: rgba(5, 5, 100, 0.253);
+    }
+
+    .someelse
+    {
+        position: relative;
+        border-radius: 0 10px 10px 10px;
+        background: rgba(5, 5, 100, 0.11);
+
+    }
+    
+    .me > .message-user
+    {
+        position: relative;
+        left: 40%;
+    }
+
+    .someelse > .message-user
+    {
+        position: relative;
+        right: 40%;
+    }
+
+    .message-user
+    {
+        color: rgba(0, 0, 0, 0.61);
+    }
+
+    .me > .message-time
+    {
+        position: relative;
+        right: 40%;
+    }
+
+    .someelse > .message-time
+    {
+        position: relative;
+        left: 40%;
+    }
+    
+    .message-time
+    {
+        color: rgba(0, 0, 0, 0.61);
+    }
+
+    .message-content{}
+</style>
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if(User.Identity.IsAuthenticated)
+    {
+        <div class="login-panel">
+            <div title="@usernametitle">
+                @username
+            </div>
+            <div>
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button class="btn btn-danger" type="submit">
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    }
+    <div class="card" id="container-chat">
+        <div class="card-title">
+            Write messages
+        </div>
+        <div class="card-body bg-white">
+            <div class="message me">
+                <div class="message-user">me</div>
+                <div class="message-content">Hi</div>
+                <div class="message-time">12:23:22</div>
+            </div>
+
+            <div class="message someelse">
+                <div class="message-user">someelse</div>
+                <div class="message-content">Hello</div>
+                <div class="message-time">12:23:00</div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <input type="text" id="input-message" class="form-control">
+        </div>
+    </div>
 </div>
+

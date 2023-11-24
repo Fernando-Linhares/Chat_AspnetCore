@@ -19,7 +19,8 @@ public class Program
 
         builder.Services.AddDbContext<ChatContext>(options => options.UseSqlServer(connectionString.ToString()));
 
-        builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ChatContext>();
+        builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+        .AddEntityFrameworkStores<ChatContext>();
 
         builder.Services.AddControllersWithViews();
 

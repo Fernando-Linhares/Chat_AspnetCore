@@ -16,9 +16,9 @@ namespace Chat_AspnetCore.Areas.Identity.Pages.Account
 {
     public class ConfirmEmailModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _userManager;
 
-        public ConfirmEmailModel(UserManager<IdentityUser> userManager)
+        public ConfirmEmailModel(UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> userManager)
         {
             _userManager = userManager;
         }

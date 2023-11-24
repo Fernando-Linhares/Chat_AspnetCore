@@ -15,10 +15,10 @@ namespace Chat_AspnetCore.Areas.Identity.Pages.Account
 {
     public class ConfirmEmailChangeModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _userManager;
+        private readonly SignInManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _signInManager;
 
-        public ConfirmEmailChangeModel(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public ConfirmEmailChangeModel(UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> userManager, SignInManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

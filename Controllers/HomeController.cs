@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Chat_AspnetCore.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace Chat_AspnetCore.Controllers;
 
@@ -10,17 +11,15 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    private UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _manager;
+
+    public HomeController(ILogger<HomeController> logger, UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> manager)
     {
+        _manager = manager;
         _logger = logger;
     }
 
     public IActionResult Index()
-    {
-        return View();
-    }
-
-    public IActionResult Privacy()
     {
         return View();
     }

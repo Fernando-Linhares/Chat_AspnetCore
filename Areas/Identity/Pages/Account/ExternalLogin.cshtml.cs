@@ -23,17 +23,17 @@ namespace Chat_AspnetCore.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ExternalLoginModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly IUserStore<IdentityUser> _userStore;
-        private readonly IUserEmailStore<IdentityUser> _emailStore;
+        private readonly SignInManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _signInManager;
+        private readonly UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _userManager;
+        private readonly IUserStore<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _userStore;
+        private readonly IUserEmailStore<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _emailStore;
         private readonly IEmailSender _emailSender;
         private readonly ILogger<ExternalLoginModel> _logger;
 
         public ExternalLoginModel(
-            SignInManager<IdentityUser> signInManager,
-            UserManager<IdentityUser> userManager,
-            IUserStore<IdentityUser> userStore,
+            SignInManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> signInManager,
+            UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> userManager,
+            IUserStore<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> userStore,
             ILogger<ExternalLoginModel> logger,
             IEmailSender emailSender)
         {
@@ -197,27 +197,27 @@ namespace Chat_AspnetCore.Areas.Identity.Pages.Account
             return Page();
         }
 
-        private IdentityUser CreateUser()
+        private Chat_AspnetCore.Areas.Identity.Data.ApplicationUser CreateUser()
         {
             try
             {
-                return Activator.CreateInstance<IdentityUser>();
+                return Activator.CreateInstance<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser>();
             }
             catch
             {
-                throw new InvalidOperationException($"Can't create an instance of '{nameof(IdentityUser)}'. " +
-                    $"Ensure that '{nameof(IdentityUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+                throw new InvalidOperationException($"Can't create an instance of '{nameof(Chat_AspnetCore.Areas.Identity.Data.ApplicationUser)}'. " +
+                    $"Ensure that '{nameof(Chat_AspnetCore.Areas.Identity.Data.ApplicationUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
                     $"override the external login page in /Areas/Identity/Pages/Account/ExternalLogin.cshtml");
             }
         }
 
-        private IUserEmailStore<IdentityUser> GetEmailStore()
+        private IUserEmailStore<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> GetEmailStore()
         {
             if (!_userManager.SupportsUserEmail)
             {
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
-            return (IUserEmailStore<IdentityUser>)_userStore;
+            return (IUserEmailStore<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser>)_userStore;
         }
     }
 }
