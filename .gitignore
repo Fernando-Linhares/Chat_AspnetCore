@@ -2,3 +2,4 @@
 bin/
 obj/
 wwwwroot/files/*
+node_modules

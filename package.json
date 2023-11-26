@@ -1,0 +1,15 @@
+{
+  "name": "chat_aspnetcore",
+  "version": "1.0.0",
+  "description": "### Overview This is a simple chat using signalr by aspnet core implementation. What is important to tell is that it's code is a just example to make something same a broadcasting messages using csharp/Dotnet Core.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@microsoft/signalr": "^8.0.0"
+  }
+}

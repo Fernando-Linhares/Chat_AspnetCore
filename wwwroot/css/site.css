@@ -20,3 +20,133 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+#chat-asp
+{
+    width: 400px;
+    height: 500px;
+    margin: auto;
+    text-align: center;  
+}
+
+#chat-asp-container
+{
+    background: #202124;
+    text-align: left;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 450px 40px;
+    margin: 5px;
+    border: solid 1px rgba(11, 17, 14, 0.486);
+    border-radius: 4px;
+}
+
+#chat-asp-content
+{
+    border: solid 15px #202124;
+    height: 92%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 10px;
+}
+
+#chat-asp-footer
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#chat-asp-container-text
+{
+    display: grid;
+    grid-template-columns: 90% 10%;
+    width: 90%;
+    padding: 5px;
+    box-shadow: 1px 2px 10px rgb(7, 0, 0);
+    border-radius: 10px;
+    background: white;
+}
+
+#chat-asp-input
+{
+    border: none;
+    width: 80%;
+    padding: 5px;
+}
+
+#chat-asp-send-message-button
+{
+    background: white;
+    border: none;
+    box-shadow: none;
+    color: grey;
+}
+
+#chat-asp-input:focus
+{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+
+.message
+{
+    margin-top: 15px;
+}
+
+.me.message
+{
+    text-align: right;
+    margin: 10px auto 10px auto;
+}
+
+.me.message > .message-content
+{
+    display: inline-block;
+    padding: 15px;
+    background: rgb(139, 202, 202);
+    border-radius: 35px 0 35px 35px;
+}
+
+.else.message > .message-content
+{
+    display: inline-block;
+    padding: 15px;
+    background: rgb(10, 148, 148);
+    border-radius: 0 35px 35px 35px;
+}
+
+.message-user
+{
+    color: rgb(139, 202, 202);
+}
+
+.message-time
+{
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.534);
+    margin: 4px;
+}
+
+.else.message
+{
+    margin: 10px auto 10px auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgba(14, 7, 7, 0.596); 
+    border-radius: 50px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+}

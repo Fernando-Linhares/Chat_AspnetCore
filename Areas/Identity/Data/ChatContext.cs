@@ -7,7 +7,7 @@ namespace Chat_AspnetCore.Areas.Identity.Data;
 
 public class ChatContext : IdentityDbContext<ApplicationUser>
 {
-    public DbSet<Message> Message;
+    public DbSet<Message> Message { get; set; }
 
     public ChatContext(DbContextOptions<ChatContext> options)
         : base(options)

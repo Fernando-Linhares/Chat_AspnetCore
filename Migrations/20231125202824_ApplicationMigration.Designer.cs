@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Chat_AspnetCore.Migrations
 {
     [DbContext(typeof(ChatContext))]
-    [Migration("20231124002445_MessageStoreMigration")]
-    partial class MessageStoreMigration
+    [Migration("20231125202824_ApplicationMigration")]
+    partial class ApplicationMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -107,7 +107,6 @@ namespace Chat_AspnetCore.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"));
 
                     b.Property<string>("ApplicationUserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Content")
@@ -115,6 +114,14 @@ namespace Chat_AspnetCore.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -262,13 +269,9 @@ namespace Chat_AspnetCore.Migrations
 
             modelBuilder.Entity("Chat_AspnetCore.Models.Message", b =>
                 {
-                    b.HasOne("Chat_AspnetCore.Areas.Identity.Data.ApplicationUser", "ApplicationUser")
+                    b.HasOne("Chat_AspnetCore.Areas.Identity.Data.ApplicationUser", null)
                         .WithMany("Messages")
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ApplicationUser");
+                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

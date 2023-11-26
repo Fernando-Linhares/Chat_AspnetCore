@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Chat_AspnetCore.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Chat_AspnetCore.Areas.Identity.Data;
 
 namespace Chat_AspnetCore.Controllers;
 
@@ -11,16 +12,23 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    private UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> _manager;
+    private UserManager<ApplicationUser> _manager;
 
-    public HomeController(ILogger<HomeController> logger, UserManager<Chat_AspnetCore.Areas.Identity.Data.ApplicationUser> manager)
+    private ChatContext _context;
+
+    public HomeController(ChatContext context, ILogger<HomeController> logger, UserManager<ApplicationUser> manager)
     {
+        _context = context;
         _manager = manager;
         _logger = logger;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
+        ViewBag.ApplicationUser = await  _manager.GetUserAsync(User);
+
+        ViewBag.Messages = _context.Message.ToList();
+
         return View();
     }
 

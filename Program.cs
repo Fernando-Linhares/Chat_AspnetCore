@@ -2,6 +2,7 @@ using StringConnection=Chat_AspnetCore.ConnectionStringEnvironment;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Chat_AspnetCore.Areas.Identity.Data;
+using Chat_AspnetCore.Hubs;
 
 namespace Chat_AspnetCore;
 
@@ -17,6 +18,8 @@ public class Program
 
         var connectionString = new StringConnection();
 
+        builder.Services.AddSignalR();
+
         builder.Services.AddDbContext<ChatContext>(options => options.UseSqlServer(connectionString.ToString()));
 
         builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -25,6 +28,7 @@ public class Program
         builder.Services.AddControllersWithViews();
 
         builder.Services.AddRazorPages();
+
 
         var app = builder.Build();
 
@@ -43,6 +47,8 @@ public class Program
         app.UseAuthorization();
 
         app.MapRazorPages();
+
+        app.MapHub<ChatHub>("/chat");
 
         app.MapControllerRoute(
             name: "default",
