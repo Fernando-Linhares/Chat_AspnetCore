@@ -43,7 +43,8 @@ public class MessageController: Controller
 
         await _context.SaveChangesAsync();
 
-        var dataMessage = new {
+        var dataMessage = new
+        {
             Content = messageRegister.Content,
             UserName = messageRegister.UserName,
             UserId = messageRegister.UserId,

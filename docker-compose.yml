@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   web:
-    container_name: web
+    container_name: chatweb
     build:
       context: .
       dockerfile: Dockerfile
@@ -11,10 +11,10 @@ services:
       - "${PWD}/.env:/App/.env"
     depends_on:
       - db
-    networks:
-      - dotnetn
+    # networks:
+    #   - dotwork
   db:
-    container_name: db
+    container_name: chatdb
     image: mcr.microsoft.com/mssql/server
     ports:
       - '1433:1433'
@@ -22,10 +22,10 @@ services:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=passwordHard!_+1s2t394
       - MSSQL_PID=Express
-    networks:
-      - dotnetn
+    # networks:
+    #   - dotwork
 
-networks:
-  dotnetn:
-    name: dotnetn
-    driver: bridge
+# networks:
+#   dotwork:
+#     external: true
+#     name: dotwork    

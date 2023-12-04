@@ -1,17 +1,29 @@
 using Microsoft.AspNetCore.Mvc;
+using Chat_AspnetCore.Areas.Identity.Data;
 
 namespace Chat_AspnetCore.Controllers;
 
+[ApiController]
+[Route("/[controller]/[action]")]
 public class EnvController: Controller
 {
-    public object App()
-    {
-        var dotenv = new DotEnv();
+    private readonly DotEnv _dotenv = new();
 
-        return new 
+    [HttpGet]
+    public IActionResult App(ChatContext context)
+    {
+        try
         {
-            app=dotenv.Get("APP_NAME"),
-            version=dotenv.Get("APP_VERSION")
-        };
+            return Ok(new
+            {
+                app=_dotenv.Get("APP_NAME"),
+                version=_dotenv.Get("APP_VERSION"),
+                connected=context.Database.CanConnect()
+            });
+        }
+        catch(Exception exception)
+        {
+            return StatusCode(500, exception.Message);
+        }
     }
 }
