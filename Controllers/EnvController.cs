@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Chat_AspnetCore.Areas.Identity.Data;
+using Chat_AspnetCore;
 
 namespace Chat_AspnetCore.Controllers;
 
@@ -14,11 +15,14 @@ public class EnvController: Controller
     {
         try
         {
+            var connectionString = new ConnectionStringEnvironment();
+
             return Ok(new
             {
                 app=_dotenv.Get("APP_NAME"),
                 version=_dotenv.Get("APP_VERSION"),
-                connected=context.Database.CanConnect()
+                connected=context.Database.CanConnect(),
+                connectionString=connectionString.ToString()
             });
         }
         catch(Exception exception)

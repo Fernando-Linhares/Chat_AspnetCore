@@ -29,7 +29,6 @@ public class Program
 
         builder.Services.AddRazorPages();
 
-
         var app = builder.Build();
 
         if (!app.Environment.IsDevelopment())

@@ -8,13 +8,5 @@ namespace Chat_AspnetCore.Areas.Identity.Data;
 
 public class ApplicationUser: IdentityUser
 {
-    [PersonalData]
-    [Column(TypeName="nvarchar(100)")]
-    public string FirstName { get; set; }
-
-    [PersonalData]
-    [Column(TypeName="nvarchar(100)")]
-    public string LastName { get; set; }
-
-    public Collection<Message> Messages { get; set; }
+    public string? FullName { get; set; }
 }

@@ -11,8 +11,6 @@ services:
       - "${PWD}/.env:/App/.env"
     depends_on:
       - db
-    # networks:
-    #   - dotwork
   db:
     container_name: chatdb
     image: mcr.microsoft.com/mssql/server
@@ -20,12 +18,5 @@ services:
       - '1433:1433'
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=passwordHard!_+1s2t394
+      - SA_PASSWORD=passwordHard!_+1s2t394
       - MSSQL_PID=Express
-    # networks:
-    #   - dotwork
-
-# networks:
-#   dotwork:
-#     external: true
-#     name: dotwork    
