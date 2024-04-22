@@ -29,6 +29,7 @@ Run
     ./migrate.sh
 
 On bash of container run
+
     dotnet ef tool-restore
     dotnet ef database update
 
