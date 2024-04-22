@@ -26,6 +26,7 @@ Step 3:
 #### MIGRATE DATABASE
 
 Run
+
     ./migrate.sh
 
 On bash of container run
