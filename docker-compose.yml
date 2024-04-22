@@ -1,7 +1,7 @@
 version: '3.9'
 services:
-  web:
-    container_name: chatweb
+  asp.chat.web:
+    container_name: asp.chat.web
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,9 +10,13 @@ services:
     volumes:
       - "${PWD}/.env:/App/.env"
     depends_on:
-      - db
-  db:
-    container_name: chatdb
+      - asp.chat.db
+    networks:
+      - asp.chat.network
+    restart: always
+
+  asp.chat.db:
+    container_name: asp.chat.db
     image: mcr.microsoft.com/mssql/server
     ports:
       - '1433:1433'
@@ -20,3 +24,11 @@ services:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=passwordHard!_+1s2t394
       - MSSQL_PID=Express
+    networks:
+      - asp.chat.network
+    restart: always
+
+networks:
+  asp.chat.network:
+    name: asp.chat.network
+    driver: bridge

@@ -30,8 +30,9 @@ public class ConnectionStringEnvironment
 
     public override string ToString()
     {
-        return $"Server={_server};User Id={_userid};"
+        return $"Server={_server},1433;User Id={_userid};"
         + $"Password={_password};Database={_database};"
-        + $"Encrypt={_encrypt};Trusted_Connection={_trustedconnection}";
+        + $"Encrypt={_encrypt};Trusted_Connection={_trustedconnection};"
+        ;
     }
 }

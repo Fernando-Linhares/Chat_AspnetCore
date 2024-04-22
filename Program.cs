@@ -17,7 +17,7 @@ public class Program
         dotenv.Load();
 
         var connectionString = new StringConnection();
-
+        Console.WriteLine(connectionString);
         builder.Services.AddSignalR();
 
         builder.Services.AddDbContext<ChatContext>(options => options.UseSqlServer(connectionString.ToString()));
